@@ -1,5 +1,5 @@
 import type { PublicAccount } from "@/db/schema";
-import { Shield, User } from "lucide-react";
+import { Cake, Shield } from "lucide-react";
 import UsernameIDSwitcher from "./UsernameIDSwitcher";
 import { Vibrant } from "node-vibrant/node";
 
@@ -33,7 +33,7 @@ const ProfilePopupContent = async (props: Record<string, any> & PublicAccount & 
         {props.admin &&
           <sub><Shield />Administrator</sub>
         }
-        <sub><User />Joined {new Date(props.joined).toLocaleDateString()}</sub>
+        <sub><Cake />Joined {new Date(props.joined).toLocaleDateString()}</sub>
       </div>
     </div>
   );
