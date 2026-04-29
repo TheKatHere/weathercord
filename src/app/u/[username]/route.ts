@@ -12,6 +12,26 @@ interface POSTBody {
 
 const generateUID = (sequential: number) => `${Math.floor(sequential).toString(16)}w${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16).padStart(14, "0")}`;
 
+export async function GET(_: Request, { params }: { params: Promise<{ username: string }> }) {
+  const account = (await db.select().from(accountsTable).where(eq(accountsTable.username, (await params).username))).values().toArray()[0];
+
+  if (!account) return new Response(null, { status: 404 });
+
+  return new Response(JSON.stringify({
+    admin: !!account.admin,
+    bio: account.bio,
+    displayName: account.displayName,
+    id: account.id,
+    joined: account.joined,
+    pronouns: account.pronouns,
+    username: account.username
+  }), {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+};
+
 export async function POST(req: Request, { params }: { params: Promise<{ username: string }> }) {
   const username = (await params).username;
 
@@ -54,4 +74,4 @@ export async function POST(req: Request, { params }: { params: Promise<{ usernam
   }).execute();
 
   return new Response();
-}
+};
