@@ -5,6 +5,7 @@ export interface Account {
   bio?: string;
   displayName?: string;
   email?: string;
+  nameFont?: string;
   id: string;
   joined: number;
   password: string;
@@ -12,13 +13,14 @@ export interface Account {
   username: string;
 }
 
-export type PublicAccount = Pick<Account, "admin" | "bio" | "displayName" | "id" | "joined" | "pronouns" | "username">;
+export type PublicAccount = Pick<Required<Account>, "admin" | "bio" | "displayName" | "id" | "joined" | "nameFont" | "pronouns" | "username">;
 
 export const accountsTable = sqliteTable("accounts", {
   admin: int(),
   bio: text(),
   displayName: text(),
   email: text(),
+  nameFont: text(),
   id: text().notNull().unique(),
   joined: int().notNull(),
   password: text().notNull(),

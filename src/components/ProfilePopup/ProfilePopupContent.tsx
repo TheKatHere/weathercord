@@ -20,7 +20,9 @@ const ProfilePopupContent = async (props: Record<string, any> & PublicAccount & 
         <div className="flex gap-1">
           <img className="rounded-full w-6 h-6" src={props.avatar} alt={props.displayName + "'s avatar"} />
           <div>
-            <div className="text-2xl font-bold">{props.displayName}</div>
+            <div className="text-2xl font-bold" style={{
+              fontFamily: props.nameFont
+            }}>{props.displayName}</div>
             <sub><UsernameIDSwitcher id={props.id} username={props.username} /></sub><br />
             <sub>{props.pronouns}</sub>
           </div>

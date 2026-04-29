@@ -22,7 +22,9 @@ const UserIndicatorSmall = async (props: Record<string, any> & PublicAccount & {
       <div className="leading-1 grow group-[.open]:-translate-y-10" style={{
         transition: "translate 0.25s"
       }}>
-        {props.displayName}<br />
+        <span style={{
+          fontFamily: props.nameFont
+        }}>{props.displayName}</span><br />
         <sub>@{props.username}</sub>
       </div>
       {props.canEdit &&

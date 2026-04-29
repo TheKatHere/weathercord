@@ -19,11 +19,12 @@ export async function GET(_: Request, { params }: { params: Promise<{ username: 
 
   return new Response(JSON.stringify({
     admin: !!account.admin,
-    bio: account.bio,
+    bio: account.bio ?? "",
     displayName: account.displayName && account.displayName.length > 1 ? account.displayName : account.username,
     id: account.id,
     joined: account.joined,
-    pronouns: account.pronouns,
+    nameFont: account.nameFont ?? "\"__nextjs-Geist\", \"Geist\", -apple-system, \"Source Sans Pro\", sans-serif",
+    pronouns: account.pronouns ?? "",
     username: account.username
   }), {
     headers: {

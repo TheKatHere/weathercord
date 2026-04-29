@@ -6,7 +6,7 @@ const GUI = async () => {
   const account = await (await fetch(getHost() + "/u/raynecloudy")).json();
   return (
     <>
-      <UserIndicator className="w-20" avatar={getHost() + "/avatar.png"} canEdit {...account} />
+      <UserIndicator className="w-20" avatar={getHost() + "/avatar.png"} splash={getHost() + "/banner.png"} canEdit {...account} />
     </>
   );
 };
