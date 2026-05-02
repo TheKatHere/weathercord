@@ -14,7 +14,7 @@ const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
   setModal: Dispatch<SetStateAction<ModalType | null>>
 }) => {
   return (
-    <Box className={"p-[0.7rem] text-left h-4 flex gap-[0.7rem] items-center overflow-hidden " + props.className} style={{
+    <Box className={"p-[0.7rem] text-left h-4 flex gap-[0.7rem] items-center overflow-hidden select-none " + props.className} style={{
       backgroundImage: props.splash ? `linear-gradient(90deg, #000000ab 0%, #00000090 100%), url(${props.splash})` : null,
       backgroundSize: "cover",
       backgroundPosition: "center"
