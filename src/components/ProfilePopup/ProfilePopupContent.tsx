@@ -50,15 +50,6 @@ const ProfilePopupContent = (props: Record<string, any> & PublicAccount & {
         {props.bio &&
           <div className="whitespace-pre-line">{props.bio}</div>
         }
-        {props.connections.length > 0 &&
-          <div>
-            {props.connections.map((connection, index) => {
-              if (connection.type === ConnectionType.Domain) {
-                return <Badge key={index} color="#bad4e8" icon={<Globe />} value={<a href={"//" + connection.value}>{connection.value}</a>} />;
-              }
-            })}
-          </div>
-        }
         <div>
           {props.id === "0w1bcb00925be5d2" &&
             <Badge color="#ff879f" icon={<Star />} value="Founder" />
@@ -71,6 +62,15 @@ const ProfilePopupContent = (props: Record<string, any> & PublicAccount & {
           }
           <Badge color="#ffc2fc" icon={<Cake />} value={`Joined ${new Date(props.joined).toLocaleDateString()}`} />
         </div>
+        {props.connections.length > 0 &&
+          <div>
+            {props.connections.map((connection, index) => {
+              if (connection.type === ConnectionType.Domain) {
+                return <Badge key={index} color="#bad4e8" icon={<Globe />} value={<a href={"//" + connection.value}>{connection.value}</a>} />;
+              }
+            })}
+          </div>
+        }
       </div>
     </div>
   );
