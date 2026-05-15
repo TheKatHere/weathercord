@@ -120,15 +120,15 @@
 
 :root {
   --accent: #bd92f7;
-  --accent-background: #8d46e842;
+  --accent-background: #9863de42;
   --background: #040405;
   --background-2: #080709;
-  --box-button-active: #725f8833;
+  --box-button-active: #786c8533;
   --error-background: #72101142;
   --error-outline: #ca5460;
   --foreground: #fafafa;
   --outline: #201c27;
-  --outline-active: #413a49;
+  --outline-active: #332d3a;
   --sub: #fafafa7f;
   --text-selection: #6284ff75;
 
