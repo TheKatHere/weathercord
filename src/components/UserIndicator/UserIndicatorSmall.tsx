@@ -34,6 +34,7 @@ const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
         <BoxButton onClick={(event) => {
           event.stopPropagation();
           props.setModal(ModalType.AccountSettings);
+          history.replaceState(null, "", "/settings/profile");
         }}>
           <Settings strokeWidth="1.5" />
         </BoxButton>

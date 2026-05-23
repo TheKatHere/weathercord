@@ -5,6 +5,7 @@ import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 export interface Tab {
   icon: ReactNode;
   name: string;
+  url?: string;
 }
 
 const TabList = (props: {
@@ -16,8 +17,8 @@ const TabList = (props: {
   const tabs = Object.keys(props.tabList).filter((value) => isNaN(parseInt(value))).length - 1;
 
   let [mouseDown, setMouseDown] = useState(false);
-  let [hoveredTab, setHoveredTab] = useState(tabs + 1);
-  let [tabY, setTabY] = useState(1);
+  let [hoveredTab, setHoveredTab] = useState(tabs + 1 + props.tab);
+  let [tabY, setTabY] = useState(props.tab + 1);
 
   requestAnimationFrame(() => {
     if (Math.abs(hoveredTab - tabs - tabY) > 0.0000001) setTabY(tabY + (hoveredTab - tabs - tabY) / 3);
@@ -37,7 +38,10 @@ const TabList = (props: {
     <div className="contents" onMouseLeave={() => setHoveredTab(props.tab + tabs + 1)}>
       {props.tabList.map((t, index) => {
         return (
-          <button key={index} onMouseEnter={() => setHoveredTab(index)} className="w-full p-[0.4rem] text-left cursor-pointer relative z-1 transition active:*:scale-95 hover:text-inherit" onClick={() => props.setTab(index)}>
+          <button key={index} onMouseEnter={() => setHoveredTab(index)} className="w-full p-[0.4rem] block text-left cursor-pointer relative z-1 transition active:*:scale-95 hover:text-inherit" onClick={() => {
+            if (t.url) history.replaceState(null, "", t.url);
+            props.setTab(index);
+          }}>
             <div className={"flex items-center gap-[0.4rem] text-(--sub) transition" + (props.tabList[props.tab] === t ? " text-(--accent)!" : "")}>
               {t.icon}{t.name}
             </div>
