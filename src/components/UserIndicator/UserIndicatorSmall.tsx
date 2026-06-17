@@ -19,7 +19,7 @@ const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
       backgroundSize: "cover",
       backgroundPosition: "center"
     }}>
-      <img className="rounded-full h-[2.6rem] group-[.open]:-translate-y-10" src={props.avatar} alt={props.displayName + "'s avatar"} style={{
+      <img className="rounded-full h-[2.6rem] w-[2.6rem] group-[.open]:-translate-y-10" src={props.avatar} alt={props.displayName + "'s avatar"} style={{
         transition: "translate 0.25s"
       }} />
       <div className="leading-1 grow group-[.open]:-translate-y-10" style={{
