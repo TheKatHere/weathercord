@@ -143,6 +143,9 @@ export async function PUT(req: Request, { params }: { params: Promise<{ username
   if (pronouns.length > 20) return new Response("Pronouns are too long", { status: 400 });
   if (username.length < 1) return new Response("Username is too short", { status: 400 });
   if (username.length > 20) return new Response("Username is too long", { status: 400 });
+  if (username.match(/[^a-zA-Z0-9-_.]/)) return new Response("Username contains invalid characters", { status: 400 });
+  if (username.endsWith(".")) return new Response("Username cannot end with a period", { status: 400 });
+  if (username.endsWith("-")) return new Response("Username cannot end with a dash", { status: 400 });
 
   const usernameTaken = (await db.select().from(accountsTable).where(eq(accountsTable.username, username))).values().toArray()[0];
   if (usernameTaken && accountToChange.username !== username) return new Response("Username is taken", { status: 400 });

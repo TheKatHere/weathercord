@@ -156,7 +156,7 @@ body {
   color: var(--sub);
 }
 
-sub, label *:not(input, textarea, button.action, select) {
+sub, label *:not(input, textarea, :is(a, button).action, select) {
   color: var(--sub);
   font-size: 0.79rem;
 }
@@ -172,7 +172,7 @@ label {
   width: 100%;
 }
 
-input:not([type="checkbox"]), textarea, button.action, select {
+input:not([type="checkbox"]), textarea, :is(a, button).action, select {
   border-radius: 0.75rem;
   padding: 0.3rem 0.65rem;
   outline: 1px solid var(--outline);
@@ -182,15 +182,19 @@ input:not([type="checkbox"]), textarea, button.action, select {
   transition: outline-color 0.125s;
 }
 
-:is(input:not([type="checkbox"]), textarea, button.action, select):focus-visible {
+:is(a, button).action {
+  text-align: center;
+}
+
+:is(input:not([type="checkbox"]), textarea, :is(a, button).action, select):focus-visible {
   outline-color: var(--accent);
 }
 
-input[type="submit"], button.action {
+input[type="submit"], :is(a, button).action {
   cursor: pointer;
 }
 
-:is(input[type="submit"], button.action):hover {
+:is(input[type="submit"], :is(a, button).action):hover {
   outline-color: var(--outline-active);
 }
 
@@ -219,6 +223,15 @@ blockquote {
 
 textarea {
   height: 6em;
+}
+
+:is(div, input).error {
+  outline-color: var(--error-outline) !important;
+  background-color: var(--error-background) !important;
+}
+
+span.error {
+  color: var(--error-outline) !important;
 }
 
 .loading-spin {

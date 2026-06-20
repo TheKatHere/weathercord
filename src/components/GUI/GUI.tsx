@@ -24,14 +24,6 @@ const GUI = () => {
         setl10nData(account.lang)
           .then(() => setLoading(false));
       });
-
-    if (location.pathname.startsWith("/settings")) {
-      const tabName = location.pathname.match(/^\/settings\/?(.+)$/)?.[1]!;
-      const tabIndex = modalTabURLNames.includes(tabName) ? modalTabURLNames.indexOf(tabName) : 0;
-      setInitialAccountSettingsTab(tabIndex);
-      history.replaceState(null, "", "/settings/" + modalTabURLNames[tabIndex]);
-      setModal(ModalType.AccountSettings);
-    }
   }, [0]);
 
   if (!account || loading) return (

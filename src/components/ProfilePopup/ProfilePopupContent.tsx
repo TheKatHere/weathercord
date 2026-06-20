@@ -2,14 +2,17 @@
 
 import Badge from "./Badge";
 import { contributors } from "@/lib/contributors";
-import convert from "color-convert";
 import { Cake, Globe, Heart, Shield, Star } from "lucide-react";
 import { ConnectionType, type PublicAccount } from "@/db/schema";
-import UsernameIDSwitcher from "./UsernameIDSwitcher";
+import convert from "color-convert";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import { Dispatch, SetStateAction } from "react";
+import { ModalType } from "@/lib/modals";
+import UsernameIDSwitcher from "./UsernameIDSwitcher";
 
 const ProfilePopupContent = (props: Record<string, any> & Omit<PublicAccount, "lang"> & {
-  canEdit?: boolean
+  canEdit?: boolean,
+  setModal?: Dispatch<SetStateAction<ModalType | null>>
 }) => {
   let accent1 = props.accent1;
   let accent2 = props.accent2;
@@ -83,6 +86,9 @@ const ProfilePopupContent = (props: Record<string, any> & Omit<PublicAccount, "l
             })}
           </div>
         }
+      {props.canEdit && (
+        <button className="action" onClick={() => props.setModal?.(ModalType.AccountSettings)}>Edit profile</button>
+      )}
       </div>
     </div>
   );
