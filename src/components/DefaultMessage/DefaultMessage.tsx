@@ -13,7 +13,7 @@ const DefaultMessage = (props: {
   const localizedStore = useSyncExternalStore(l10nStore.subscribe, l10nStore.getSnapshot); // update all DefaultMessages when language changes
 
   let data: string | ReactNode[] = localize(props.id);
-  data = data.replaceAll("{{APP_NAME}}", props.values?.APP_NAME as string ?? localizedStore.APP_NAME ?? APP_NAME);
+  data = data.replaceAll("{{APP_NAME}}", props.values?.APP_NAME as string ?? localizedStore?.APP_NAME ?? APP_NAME);
 
   for (const key in props.values) {
     data = reactStringReplace(data, `{{${key}}}`, (_, i) => (
