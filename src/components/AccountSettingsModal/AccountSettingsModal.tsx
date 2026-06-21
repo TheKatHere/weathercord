@@ -103,7 +103,7 @@ const AccountSettingsModal = (props: {
           <ConnectionsTab account={props.account} />
         }
         {tab === ModalTab.Language &&
-          <LanguageTab account={props.account} />
+          <LanguageTab account={props.account} setAccount={props.setAccount} />
         }
         {tab === ModalTab.About &&
           <AboutTab />

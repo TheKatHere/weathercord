@@ -26,6 +26,10 @@ div:has(> .lang) {
   background-color: var(--box-button-active);
 }
 
+.lang.active > div {
+  background-color: var(--accent-background);
+}
+
 .lang img {
   margin-right: 1.5rem;
   scale: 0.9;

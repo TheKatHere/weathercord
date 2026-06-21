@@ -3,11 +3,13 @@
 import { AuthorizedAccountFromAPI } from "@/db/schema";
 import Box from "../Box/Box";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
-import "./LanguageTab.css";
+import { Dispatch, SetStateAction } from "react";
 import { languages, setl10nData } from "@/lib/l10n";
+import "./LanguageTab.css";
 
 const LanguageTab = (props: {
-  account: AuthorizedAccountFromAPI
+  account: AuthorizedAccountFromAPI,
+  setAccount: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>
 }) => {
   return (
     <div className="h-full flex flex-col gap-1">
@@ -16,7 +18,18 @@ const LanguageTab = (props: {
         <div className="flex flex-col rounded-2xl">
           {languages.map((language, i) => {
             return (
-              <button key={i} className="lang" onClick={() => setl10nData(language.code)}>
+              <button key={i} className={"lang".concat(props.account.lang === language.code ? " active" : "")} onClick={() => {
+                props.setAccount({
+                  ...props.account,
+                  lang: language.code
+                });
+                fetch(`/u/${encodeURIComponent(props.account.username)}/lang`, {
+                  method: "PUT",
+                  body: JSON.stringify({
+                    lang: language.code
+                  })
+                });
+              }}>
                 <div className="transition">
                   <img src={`/l10n/icons/${language.code}.svg`} aria-hidden />
                   <span>{language.name}</span>

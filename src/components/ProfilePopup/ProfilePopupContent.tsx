@@ -72,7 +72,7 @@ const ProfilePopupContent = (props: PublicAccount & {
             )} />
           }
           {props.showLang && (() => {
-            const language = languages.find((language) => language.code);
+            const language = languages.find((language) => language.code === props.lang);
             if (!language) return;
             return (
               <Badge color="#ffbddb" icon={<img className="lucide w-[1.5rem] saturate-0 opacity-75 transition" src={`/l10n/icons/${language.code}.svg`} />} value={(

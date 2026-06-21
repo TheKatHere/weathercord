@@ -32,6 +32,10 @@ const GUI = () => {
       });
   }, [0]);
 
+  useEffect(() => {
+    setl10nData(account?.lang ?? "en-us");
+  }, [account]);
+
   if (!account) {
     if (loading) return (
       <LoadingScreen />

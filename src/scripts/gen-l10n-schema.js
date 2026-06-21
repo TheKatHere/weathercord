@@ -11,6 +11,5 @@ for (const key of Object.keys(data)) {
   buffer += `  | "${key}"\n`;
 }
 buffer = buffer.replace(/\n$/, ";\n");
-buffer += "\nexport type l10n = Record<l10nValue, string>;\n";
 
 writeFileSync(join(cwd(), "src", "lib", "l10n.generated.ts"), buffer);
