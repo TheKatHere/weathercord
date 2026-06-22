@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/lib/constants";
 import Box from "../Box/Box";
 import { contributors, team } from "@/lib/contributors";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
@@ -6,6 +7,7 @@ import { FileText, Hammer, Heart, Quote } from "lucide-react";
 const AboutTab = () => {
   return (
     <>
+      <img className="w-12 m-auto" src="/Weathercord.svg" alt={APP_NAME} />
       <h1><DefaultMessage id="settings.tab.about.header" /></h1>
       <p><DefaultMessage id="settings.tab.about.header.paragraph-1" /></p>
       <h2><Hammer /> <DefaultMessage id="settings.tab.about.team" /></h2>
