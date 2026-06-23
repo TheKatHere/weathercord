@@ -14,3 +14,35 @@
 </div>
 
 This repository contains the source code for the frontend and backend of Weathercord, an instant messaging app.
+
+## Setting Up
+To set up a Weathercord development environment, first, clone the repository:
+```sh
+git clone https://github.com/raynepaws/weathercord
+cd weathercord
+```
+
+Then, install dependencies:
+```
+npm ci
+```
+
+Create a `.env` file. The only key you need for now is called `DB_FILE_NAME`. the recommended value for this key is provided in `.env.example`.
+
+Create a directory called `database`. Inside this directory, create three more empty directories called `avatars`, `banners`, and `temp`. Eventually, there will be a script to automate this step.
+```
+database
+├─ avatars
+├─ banners
+└─ temp
+```
+
+Next, create the database file with the schema by running the following command:
+```sh
+npx drizzle-kit push
+```
+
+Finally, start the Next.js server by running the command below.
+```sh
+npm run dev
+```
