@@ -9,6 +9,8 @@ import { setl10nData } from "@/lib/l10n";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import { useEffect, useState } from "react";
 import UserIndicator from "../UserIndicator/UserIndicator";
+import { StationList }from "../StationList/StationList";
+import { MessageManager }from "../MessageManager/MessageManager";
 
 const GUI = () => {
   const [account, setAccount] = useState<AuthorizedAccountFromAPI | null>(null);
@@ -48,6 +50,16 @@ const GUI = () => {
   return (
     <>
       <div className="contents" inert={modal !== null}>
+        <StationList className="absolute top-1 left-1" style={{
+          height: "calc(100vh - 6.7rem)",
+          width: "20rem",
+            outline: "dashed"
+        }}/>
+        <MessageManager className="absolute top-1 left-22" style={{
+          height: "calc(100vh - 6.7rem)",
+          width: "calc(100vw - 23rem)",
+          outline: "dashed"
+        }}/>
         <UserIndicator className="w-20" canEdit {...account} setModal={setModal} />
         <Prompt className="absolute bottom-1 left-22" style={{
           width: "calc(100vw - 23rem)"
